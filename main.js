@@ -55,12 +55,22 @@ const loadChartJs = (urlGoogle, element) => {
                     }
             
                 }
-                var dataset = {
-                    label: dataj.rows[i].c[0].v,
-                    backgroundColor: colors[i],
-                    borderColor: colors[i],
-                    data: series_data
+                
+                if(settingsJson.type == 'doughnut' || settingsJson.type == 'pie'){
+                    var dataset = {
+                        label: dataj.rows[i].c[0].v,
+                        backgroundColor: colors,
+                        data: series_data
+                    }
+                } else {
+                    var dataset = {
+                        label: dataj.rows[i].c[0].v,
+                        backgroundColor: colors[i],
+                        borderColor: colors[i],
+                        data: series_data
+                    }
                 }
+                
             
                 datasets.push(dataset);
             
